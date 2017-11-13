@@ -1,0 +1,34 @@
+{
+  "name": "jaydata",
+  "version": "1.0.0",
+  "description": "A centralized location for all of my APIs",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "firebase": "^4.6.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaylara/jaydata.git"
+  },
+  "keywords": [
+    "jaylara",
+    "portfolio",
+    "web"
+  ],
+  "author": "Jay Lara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaylara/jaydata/issues"
+  },
+  "homepage": "https://github.com/jaylara/jaydata#readme"
+}
