@@ -10,7 +10,8 @@
     "express": "^4.16.2",
     "firebase": "^4.6.2",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.12.4"
+    "mongoose": "^4.12.4",
+    "yelp-fusion": "^1.0.4"
   },
   "devDependencies": {},
   "scripts": {
