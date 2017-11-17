@@ -4,6 +4,8 @@
   "description": "A centralized location for all of my APIs",
   "main": "server.js",
   "dependencies": {
+    "axios": "^0.17.1",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
