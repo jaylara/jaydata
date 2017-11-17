@@ -36,7 +36,6 @@ router.route('/yelpproxy/reviews')
 router.route('/yelpproxy/autocomplete')
     .get(yelpproxyRoute.autocomplete);
 
-
 const cahRoute = require('./cah/index');
 
 router.route('/cah')
