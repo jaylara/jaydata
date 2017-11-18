@@ -1,22 +1,44 @@
-const database = require('../../utils/firebase').firebase;
+const DB = require('../../utils/firebase').firebase.app().database();
 
-//Selects one item by parameter id from specified DB.Item
-function selectItem(req, res) {
-	var ref = database.app().database().ref();
-	ref.once('value').then(function (data) {
-		res.json(data.val().blurbs);
+//Selects one blurb by id from DB.blurbs
+function selectBlurb(req, res, id) {
+	var ref = DB.ref('/blurbs/'+id)//.orderByChild('id').equalTo(req.params.id);
+	ref.once('value').then((data) => {
+		var blurb = data.val();
+
+		if(!blurb) 	res.json({"err":"this collection is empty"});
+		else 			res.json(blurb);
+	})
+	.catch((error) => {
+		res.status(500).json({error: error.message});
 	});
+
+} // end of selectBlurb()
+
+//Selects one blurb by parameter id from DB.blurbs
+function selectItem(req, res) {
+	selectBlurb(req,res,req.params.id);
 }//end of selectItem()
 
-//Selects all items from specified DB.Item
+//Selects all blurbs from DB.blurbs or selects one by query bid
 function selectAllItems(req, res) {
-	var ref = database.app().database().ref();
-	ref.once('value').then(function (data) {
-		res.json(data.val().blurbs);
-	});
+	if(req.query.bid)
+		selectBlurb(req,res,req.query.bid);
+	else{
+		var ref = DB.ref('/blurbs')
+		ref.once('value').then(function (data) {
+			var blurbs = data.val();
+
+			if(!blurbs) 	res.json({"err":"this collection is empty"});
+			else 			res.json(blurbs);
+		})
+		.catch((error) => {
+			res.status(500).json({error: error.message});
+		});
+	}
 }//end of selectAllItems()
 
-//exporting common, simple CRUD methods for use by other routes
+//exporting CRUD methods for use by other routes
 module.exports = {
 	selectAllItems,
 	selectItem
