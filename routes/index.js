@@ -36,10 +36,14 @@ router.route('/yelpproxy/reviews')
 router.route('/yelpproxy/autocomplete')
     .get(yelpproxyRoute.autocomplete);
 
+
+//CAH Routes
 const cahRoute = require('./cah/index');
 
 router.route('/cah')
-    .get(cahRoute.getCards);
+    .get(cahRoute.getCardSets);
+router.route('/cah/draw')
+    .get(cahRoute.drawCards);
 
 //Goceries Routes
 const goceriesRoute = {
